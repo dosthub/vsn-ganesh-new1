@@ -1,0 +1,2 @@
+CONTACT_SHEET_WEBHOOK_URL=https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec
+CONTACT_WEBHOOK_SECRET=replace-with-the-same-long-random-secret-used-in-apps-script

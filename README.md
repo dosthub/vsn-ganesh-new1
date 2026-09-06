@@ -22,4 +22,8 @@ npx wrangler deploy
 
 For Cloudflare Workers Builds, keep the root directory at the repository root, use `npm run build` as the build command, and use `npx wrangler deploy` as the deploy command. The root npm scripts install and build the app in `website/`, while Wrangler reads `worker.js`, `wrangler.toml` and the generated `website/out/` assets from their existing locations.
 
+## Contact form
+
+Contact messages can be saved privately to Google Sheets through the existing Worker. Follow [google-apps-script/README.md](./google-apps-script/README.md) to deploy the included Apps Script and configure the two Cloudflare secrets. The browser never receives the Sheet write secret.
+
 Share the Google Sheet as **Anyone with the link can view**, or the site will keep the last saved snapshot.
