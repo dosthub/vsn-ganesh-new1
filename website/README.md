@@ -30,6 +30,10 @@ npm run dev
 
 Open http://localhost:3000. Run npm run build for a static export in out/. Upload out/ to a static host, or import this website directory as the Root Directory in Vercel. No database or login is needed. npm run start is for a server deployment only; the current static export should be served with a static host.
 
+## Website visit counter
+
+The footer shows a personal visit count stored only in the current browser. A visible page must remain open for 1.5 seconds before it records a visit, and it counts at most once every 24 hours. Refreshes and client-side route changes do not increase it. Clearing site data or using another browser starts a separate count; this is intentionally labelled “visits from you” rather than presented as a global website total.
+
 ## Validate
 
 - npm run typecheck

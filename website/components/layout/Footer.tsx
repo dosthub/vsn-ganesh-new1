@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Flower2 } from "lucide-react";
 import { communityConfig, navigation } from "@/data/community";
+import { VisitCounter } from "@/components/layout/VisitCounter";
 export function Footer() {
   return (
     <footer>
@@ -11,6 +12,10 @@ export function Footer() {
             <span>{communityConfig.name}</span>
           </div>
           <p>Built for our community with unity and transparency.</p>
+          <p className="developer-credit">
+            Developed by <strong>Dosthub Solutions Pvt. Ltd.</strong> ·{" "}
+            <a href="tel:7569666936">Ph: 7569666936</a>
+          </p>
         </div>
         <nav aria-label="Footer navigation">
           {navigation
@@ -27,6 +32,7 @@ export function Footer() {
         <span>
           © {new Date().getFullYear()} {communityConfig.name}
         </span>
+        <VisitCounter />
         <span>Festival accounts: Google Sheet on each page load · Other sections: sample</span>
       </div>
     </footer>
