@@ -5,7 +5,6 @@ The complete Next.js project is in [website](./website/README.md).
 From this directory:
 
 ```sh
-cd website
 npm install
 npm run dev
 ```
@@ -17,8 +16,10 @@ See [website/README.md](./website/README.md) for pages, testing, deployment and 
 For Cloudflare, build the static site and deploy the Worker so `/api/finances` can refresh donations and expenses:
 
 ```sh
-cd website && npm run build && cd ..
-wrangler deploy
+npm run build
+npx wrangler deploy
 ```
+
+For Cloudflare Workers Builds, keep the root directory at the repository root, use `npm run build` as the build command, and use `npx wrangler deploy` as the deploy command. The root npm scripts install and build the app in `website/`, while Wrangler reads `worker.js`, `wrangler.toml` and the generated `website/out/` assets from their existing locations.
 
 Share the Google Sheet as **Anyone with the link can view**, or the site will keep the last saved snapshot.
