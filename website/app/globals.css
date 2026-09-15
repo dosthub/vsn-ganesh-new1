@@ -2575,6 +2575,21 @@ section[id] {
   padding: 21px 24px;
   margin-bottom: 20px;
 }
+.society-layout-image {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #d5dfcd;
+  border-radius: 12px;
+}
+.society-layout-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.society-layout-image:focus-visible {
+  outline: 3px solid #164d3b;
+  outline-offset: 4px;
+}
 .planned-budget strong {
   font-size: 30px;
   display: block;

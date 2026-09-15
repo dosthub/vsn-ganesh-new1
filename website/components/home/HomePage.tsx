@@ -34,7 +34,6 @@ export function HomePage({
   records: initialRecords,
   photos,
   announcements,
-  schedule,
 }: {
   records: YearRecord[];
   photos: GalleryPhoto[];
@@ -99,6 +98,28 @@ export function HomePage({
         </div>
       </section>
       <div className="container">
+        <section id="society-layout" className="home-section">
+          <SectionHeading
+            eyebrow="OUR NEIGHBOURHOOD"
+            title="Society layout"
+            description="Find plot numbers, roads and shared spaces in our society. Select the layout to view it at full size."
+          />
+          <a
+            className="society-layout-image"
+            href="/images/society-layout.jpeg"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the society layout at full size (opens in a new tab)"
+          >
+            <Image
+              src="/images/society-layout.jpeg"
+              alt="Society layout showing numbered plots, eight internal roads, the central road, main road entrances, parks and temple"
+              width={1280}
+              height={720}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+            />
+          </a>
+        </section>
         <SheetLoadGate live={live}>
           <div className="home-stats">
             <StatCard
@@ -137,7 +158,7 @@ export function HomePage({
             <CalendarDays size={18} />
             <strong>COMMUNITY UPDATE</strong>
           </span>
-          <p>Ganesh celebrations: preparations are underway</p>
+          <p>Daily puja & evening aarti at 8 PM · Annadanam on 20 September</p>
           <ArrowRight size={18} />
         </Link>
         <section className="home-section">
@@ -215,8 +236,7 @@ export function HomePage({
         </section>
         <div className="festival-bottom">
           <span>
-            <CalendarDays size={17} /> Festival dates & puja timings will be
-            announced.
+            <CalendarDays size={17} /> Ganesh Sthapana: 14 September 2026 · Daily puja & evening aarti: 8 PM
           </span>
           <Link href="/ganesh-chaturthi#contributors">
             View contributors <ArrowRight size={16} />
@@ -245,11 +265,15 @@ export function HomePage({
           <SectionHeading
             eyebrow="LET’S COME TOGETHER"
             title="Days to look forward to."
-            description="A preview of our celebration programme. Dates will be confirmed by the committee."
+            description="Join our community for Ganesh celebrations, daily puja and evening aarti, and Annadanam."
             href="/ganesh-chaturthi#schedule"
             linkLabel="View programme"
           />
-          <Schedule items={schedule.slice(0, 3)} />
+          <Schedule items={[
+            { day: "14 September 2026", title: "Ganesh Sthapana", time: "14 September 2026", description: "Ganesh Sthapana marks the beginning of our community celebrations." },
+            { day: "Every day", title: "Puja & evening aarti", time: "8 PM", description: "Come together for daily puja and evening aarti." },
+            { day: "20 September 2026", title: "Annadanam & Ganesh Anna Prasadham", time: "Afternoon", description: "Join the community for Annadanam and Ganesh Anna Prasadham." },
+          ]} />
         </section>
         <section className="home-section">
           <SectionHeading
