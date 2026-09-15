@@ -149,6 +149,18 @@ const worker = {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/$/, "") || "/";
+    if (path === "/api/pooja-schedule") {
+      if (request.method !== "GET") return json({ error: "Method not allowed" }, 405);
+      try {
+        const sheetUrl = `https://docs.google.com/spreadsheets/d/${env.GOOGLE_SHEET_ID || DEFAULT_SHEET_ID}/gviz/tq?tqx=out:csv&gid=2009284977&headers=1&tq=${encodeURIComponent("select A,B,D,E")}`;
+        const response = await fetch(sheetUrl, { cache: "no-store" });
+        const csv = await response.text();
+        if (!response.ok || (csv && !looksLikeCsv(csv))) throw new Error("Schedule unavailable");
+        return json({ csv, fetchedAt: new Date().toISOString() });
+      } catch {
+        return json({ error: "The pooja schedule could not be loaded. Please try again." }, 502);
+      }
+    }
     if (path === "/api/contact") {
       return handleContact(request, env);
     }

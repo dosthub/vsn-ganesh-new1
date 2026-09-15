@@ -27,6 +27,7 @@ export function PoojaRequestForm() {
       if (!response.ok || result?.ok !== true) throw new Error("Request failed");
       form.reset();
       setStatus("success");
+      window.dispatchEvent(new Event("pooja-request-saved"));
     } catch (cause) {
       setError(cause instanceof Error && cause.message !== "Request failed" ? cause.message : "We couldn’t save your request. Please try again or contact the committee.");
       setStatus("error");

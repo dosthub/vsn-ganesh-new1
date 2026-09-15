@@ -10,6 +10,7 @@ import {
 import { FestivalDashboard } from "@/components/ganesh/FestivalDashboard";
 import { Schedule } from "@/components/community/Schedule";
 import { PoojaRequestForm } from "@/components/community/PoojaRequestForm";
+import { PoojaSchedule } from "@/components/community/PoojaSchedule";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 export const metadata = {
   title: "Vinayaka Chavithi Celebrations",
@@ -41,6 +42,7 @@ export default async function Page() {
             committee.
           </span>
           <div className="button-row">
+            <a href="#pooja-schedule" className="button secondary">Members’ pooja schedule</a>
             <a href="#pooja-request" className="button secondary">Request a pooja date</a>
             <a href="#contributors" className="button primary">
               View contributions
@@ -61,6 +63,7 @@ export default async function Page() {
         </div>
       </section>
       <DemoNote />
+      <PoojaSchedule />
       <section id="pooja-request" className="section-space">
         <PoojaRequestForm />
       </section>

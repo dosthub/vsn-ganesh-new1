@@ -6,6 +6,22 @@ import { test } from "node:test";
 const source = readFileSync(new URL("../lib/community-worker.js", import.meta.url), "utf8");
 const { default: worker } = await import("data:text/javascript;base64," + Buffer.from(source).toString("base64"));
 const origin = "https://community.example";
+test("schedule reads only public columns and reports upstream failures", async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async (input) => {
+      const url = new URL(String(input));
+      assert.equal(url.searchParams.get("gid"), "2009284977");
+      assert.equal(url.searchParams.get("tq"), "select A,B,D,E");
+      return new Response('"Member name","Requested date","Status","Plot number"\n"Member","2026-09-20","Requested","10"');
+    };
+    const result = await worker.fetch(new Request(origin + "/api/pooja-schedule/"), {});
+    assert.equal(result.status, 200);
+    assert.match((await result.json()).csv, /Member/);
+    globalThis.fetch = async () => new Response("<html>Sign in</html>");
+    assert.equal((await worker.fetch(new Request(origin + "/api/pooja-schedule/"), {})).status, 502);
+  } finally { globalThis.fetch = originalFetch; }
+});
 function request(body: unknown, requestOrigin = origin) {
   return new Request(origin + "/api/pooja-requests", {
     method: "POST", headers: { origin: requestOrigin, "content-type": "application/json" }, body: JSON.stringify({ plot: "2-A/10", phone: "9876543210", ...(body as object) }),

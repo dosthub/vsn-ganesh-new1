@@ -1,5 +1,9 @@
 # Pooja request integration
 
+## Member schedule display
+
+Members can view the request sheet at `/ganesh-chaturthi/#pooja-schedule`, linked from the homepage. The public schedule endpoint queries only member name, requested date, status and plot number, excluding phone numbers and submission timestamps. The spreadsheet must remain publicly readable for this display. Committee members can change a row's Status from `Requested` to `Confirmed` after reviewing it; the website shows the updated status when refreshed. A successful form submission refreshes the displayed schedule automatically.
+
 The form is on `/ganesh-chaturthi/#pooja-request`. It submits member name, requested date, plot number and phone number through the Worker to tab ID `2009284977` in the supplied spreadsheet. A request does not reserve or confirm a date. Multiple requests for the same date are allowed for committee review.
 
 ## Connect Google Sheets

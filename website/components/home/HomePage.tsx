@@ -266,8 +266,8 @@ export function HomePage({
             eyebrow="LET’S COME TOGETHER"
             title="Days to look forward to."
             description="Join our community for Ganesh celebrations, daily puja and evening aarti, and Annadanam."
-            href="/ganesh-chaturthi#schedule"
-            linkLabel="View programme"
+            href="/ganesh-chaturthi#pooja-schedule"
+            linkLabel="Members’ pooja schedule"
           />
           <Schedule items={[
             { day: "14 September 2026", title: "Ganesh Sthapana", time: "14 September 2026", description: "Ganesh Sthapana marks the beginning of our community celebrations." },
